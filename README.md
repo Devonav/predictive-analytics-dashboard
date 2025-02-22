@@ -68,3 +68,8 @@ Day: 25 (Christmas)
 Previous Day Sales: 500
 Sales 7 Days Ago: 400
 Cumulative Sales: 150000
+
+### Acknowledgements
+
+Built using open-source libraries.
+Dataset sourced from a Brazilian retail sales dataset.
