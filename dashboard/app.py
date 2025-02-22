@@ -1,11 +1,11 @@
-# Enhanced Predictive Analytics Dashboard with Random Forest Model and Additional Features
+# Enhanced Predictive Analytics Dashboard with Hyperparameter Tuning and Additional Features
 
 # Step 1: Import libraries
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
 import streamlit as st
@@ -48,22 +48,35 @@ def perform_eda(data):
     plt.tight_layout()
     return plt.gcf()
 
-# Step 5: Model Training using Random Forest with additional features
+# Step 5: Hyperparameter Tuning using Grid Search
 def train_model(data):
     features = ['estoque', 'preco', 'month', 'day', 'dayofweek', 'rolling_avg_7', 'lag_1', 'lag_7', 'cumulative_sales']
     X = data[features]
     y = data['venda']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-    model = RandomForestRegressor(n_estimators=100, random_state=42)
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
+    
+    # Define parameter grid
+    param_grid = {
+        'n_estimators': [100, 200, 300],
+        'max_depth': [10, 20, None],
+        'min_samples_split': [2, 5, 10],
+        'min_samples_leaf': [1, 2, 4]
+    }
+    
+    # Initialize GridSearchCV
+    rf = RandomForestRegressor(random_state=42)
+    grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=3, n_jobs=-1, verbose=1)
+    grid_search.fit(X_train, y_train)
+    
+    best_model = grid_search.best_estimator_
+    y_pred = best_model.predict(X_test)
     mse = mean_squared_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
-    return model, mse, r2
+    return best_model, mse, r2
 
 # Step 6: Streamlit Dashboard
 def run_dashboard():
-    st.title("Brazilian Retail Sales Forecasting Dashboard with Advanced Features")
+    st.title("Brazilian Retail Sales Forecasting Dashboard with Hyperparameter Tuning")
     data = load_data()
     data = preprocess_data(data)
     st.write("### Dataset Preview")
