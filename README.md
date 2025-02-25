@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 ### Running the Dashboard
 
-###Run the Streamlit app:
+### Run the Streamlit app:
 streamlit run dashboard/app.py
 
 Access the dashboard via the displayed local URL (typically http://localhost:8501/)
