@@ -62,7 +62,7 @@ def train_model(data):
     mse = mean_squared_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
 
-    # Ensure output directory exists
+    # Ensure output directory exists  
     output_dir = 'outputs'
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -85,7 +85,7 @@ def train_model(data):
 
     return best_model, mse, r2, feature_importance_df
 
-# Step 5: Streamlit Dashboard Display
+# Step 5: Streamlit Dashboard Display    
 def run_dashboard():
     st.title("Brazilian Retail Sales Forecasting Dashboard with Random Forest Model")
     data = load_data()
@@ -114,6 +114,6 @@ def run_dashboard():
     prediction = model.predict(np.array([[estoque, preco, month, day, dayofweek, rolling_avg_7, lag_1, lag_7, cumulative_sales]]))
     st.write(f"Predicted Sales: {prediction[0]:.2f}")
 
-# Run the dashboard
+# Run the dashboard from main function
 if __name__ == '__main__':
     run_dashboard()
