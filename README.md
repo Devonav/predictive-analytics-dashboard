@@ -1,13 +1,13 @@
-# 📊 Predictive Analytics Dashboard
+# Predictive Analytics Dashboard
 
-## 🔍 Overview
+## Overview
 This project is a predictive analytics dashboard designed to forecast retail sales using machine learning. Built using **Python** and **Streamlit**, the dashboard employs a **Random Forest Regressor** to make predictions based on historical sales data.
 
 It is particularly useful for identifying trends in retail sales and making data-driven inventory management decisions.
 
 ---
 
-## 🎯 Features
+## Features
 - Predict future sales based on historical data
 - Visualize feature importance for better interpretability
 - Interactive input for custom sales predictions
@@ -15,7 +15,7 @@ It is particularly useful for identifying trends in retail sales and making data
 
 ---
 
-## ⚙️ Technologies Used
+## Technologies Used
 - **Python 3.8+**
 - **Streamlit**
 - **Scikit-learn**
@@ -25,9 +25,9 @@ It is particularly useful for identifying trends in retail sales and making data
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### ✅ Prerequisites
+### Prerequisites
 Ensure you have Python installed. Set up a virtual environment:
 
 ```bash
